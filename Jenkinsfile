@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Jenkins credentials ID for GitHub username + PAT
-        GIT_CREDENTIALS = credentials('github-creds')
+        GIT_CREDENTIALS = credentials('github')
         TESTNG_JAR = 'lib/testng-7.8.1.jar'
     }
 
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/pkz15/TestngFramework.git',
-                    credentialsId: 'github-creds'
+                    credentialsId: 'github'
             }
         }
 
