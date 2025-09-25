@@ -4,8 +4,7 @@ pipeline {
     environment {
         // Jenkins credentials ID for GitHub (username + PAT)
         GIT_CREDENTIALS = credentials('github')
-        MAVEN_SETTINGS = 'C:\\Users\\premm\\.m2\\settings.xml'
-        LOCAL_M2_REPO = 'C:\\Users\\premm\\.m2\\repository'  // Local Maven repo
+       
     }
 
     tools {
@@ -35,7 +34,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 echo 'Running Maven clean install and test with local repo...'
-                bat "mvn clean install test -U -s ${MAVEN_SETTINGS} -Dmaven.repo.local=${LOCAL_M2_REPO} -DsuiteXmlFiles=src/test/resources/testng.xml"
+                bat "mvn clean test "
             }
         }
 
@@ -53,10 +52,10 @@ pipeline {
             cleanWs()  // Clean workspace after every build
         }
         success {
-            echo 'Build Successful! ✅'
+            echo 'Build Successful! '
         }
         failure {
-            echo 'Build Failed! ❌ Check logs for errors.'
+            echo 'Build Failed!  Check logs for errors.'
         }
     }
 }
