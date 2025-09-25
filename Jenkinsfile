@@ -2,16 +2,19 @@ pipeline {
     agent any
 
     environment {
-        GIT_CREDENTIALS = credentials('github')              // GitHub credentials
-        MAVEN_SETTINGS = 'C:\\Users\\premm\\.m2\\settings.xml' // Optional if using custom settings
+        // Jenkins credentials ID for GitHub (username + PAT)
+        GIT_CREDENTIALS = credentials('github')
+        MAVEN_SETTINGS = 'C:\\Users\\premm\\.m2\\settings.xml'
+        LOCAL_M2_REPO = 'C:\\Users\\premm\\.m2\\repository'  // Local Maven repo
     }
 
     tools {
-        jdk 'JAVA_HOME'       // Name of your JDK installation in Jenkins
-        maven 'Maven'         // Name of your Maven installation in Jenkins
+        jdk 'JAVA_HOME'    // Jenkins JDK installation name
+        maven 'Maven'      // Jenkins Maven installation name
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 echo 'Cloning repository...'
@@ -29,17 +32,17 @@ pipeline {
             }
         }
 
-        stage('Build and Test') {
+        stage('Build & Test') {
             steps {
-                echo 'Running Maven clean and test with TestNG suite...'
-                bat 'mvn clean test -DsuiteXmlFiles=src/test/resources/testng.xml'
+                echo 'Running Maven clean install and test with local repo...'
+                bat "mvn clean install test -U -s ${MAVEN_SETTINGS} -Dmaven.repo.local=${LOCAL_M2_REPO} -DsuiteXmlFiles=src/test/resources/testng.xml"
             }
         }
 
         stage('Publish TestNG Results') {
             steps {
                 echo 'Publishing TestNG results...'
-                // TestNG plugin parses the XML generated in target/surefire-reports
+                // TestNG plugin parses testng-results.xml in the target folder
                 testngResults pattern: '**/target/surefire-reports/testng-results.xml'
             }
         }
