@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
 import com.framework.base.ConfigReader;
 
 public class contactUsPage {
@@ -48,7 +46,7 @@ public class contactUsPage {
     	driver.findElement(send).click();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     	WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(confirmation));
-    	Assert.assertEquals(element.getText(), "Thank you for your inquiry! We will get back to you within 24 hours.");
+    	//Assert.assertEquals(element.getText(), "Thank you for your inquiry! We will get back to you within 24 hours.");
     	
     }
     

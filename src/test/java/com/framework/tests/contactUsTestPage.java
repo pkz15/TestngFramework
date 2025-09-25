@@ -1,7 +1,7 @@
 package com.framework.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.framework.base.BaseTest;
 import com.framework.pages.contactUsPage;
 
