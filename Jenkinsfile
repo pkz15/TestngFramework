@@ -38,19 +38,12 @@ pipeline {
         }
 
         stage('Publish TestNG Results') {
-            steps {
-                echo 'Publishing TestNG results...'
-                script {
-                    def testResults = findFiles(glob: '**/test-output/testng-results.xml')
-            if (testResults.length > 0) {
-                testngResults pattern: '**/test-output/testng-results.xml'
-            } else {
-                echo 'No TestNG results found in test-output!'
-            }
-                }
-            }
-        }
+    steps {
+        echo 'Publishing TestNG results...'
+        // Works for both default TestNG and Maven Surefire
+        testngResults pattern: '**/test-output/testng-results.xml, **/target/surefire-reports/testng-results.xml'
     }
+}
 
     post {
         always {
