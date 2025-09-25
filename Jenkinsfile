@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo 'Running Maven clean and test...'
                 // Force Maven to update dependencies in case of missing artifacts
-                 bat "mvn -s ${env.MAVEN_SETTINGS} clean test"
+                  bat 'mvn clean test -Dmaven.repo.local=lib'
             }
         }
 
