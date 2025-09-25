@@ -39,7 +39,12 @@ pipeline {
 
        stage('Publish TestNG Results') {
     steps {
-        publishTestNGResults testNGpattern: '**/test-output/testng-results.xml'
+       junit '**/target/surefire-reports/*.xml'
+    }
+}
+        stage('Archive TestNG HTML Report') {
+    steps {
+        archiveArtifacts artifacts: 'test-output/**', fingerprint: true
     }
 }
 
