@@ -4,6 +4,7 @@ pipeline {
     environment {
         // Jenkins credentials ID for GitHub (username + PAT)
         GIT_CREDENTIALS = credentials('github')
+        MAVEN_SETTINGS = 'C:\\Users\\premm\\.m2\\settings.xml'
     }
 
     tools {
@@ -34,7 +35,7 @@ pipeline {
             steps {
                 echo 'Running Maven clean and test...'
                 // Force Maven to update dependencies in case of missing artifacts
-                bat 'mvn clean test -U'
+                 bat "mvn -s ${env.MAVEN_SETTINGS} clean test"
             }
         }
 
