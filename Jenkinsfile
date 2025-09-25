@@ -21,7 +21,7 @@ environment {
             steps {
                 // Execute Maven clean and test goals to run TestNG tests
                 // Assumes your project is a Maven project with TestNG dependencies
-                sh 'mvn clean test' 
+                bat 'mvn clean test' 
             }
         }
 
