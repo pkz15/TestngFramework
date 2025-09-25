@@ -44,6 +44,7 @@ pipeline {
         testngResults pattern: '**/test-output/testng-results.xml, **/target/surefire-reports/testng-results.xml'
     }
 }
+    }
 
     post {
         always {
