@@ -2,11 +2,13 @@ pipeline {
     agent any
 
     environment {
-        GIT_CREDENTIALS = credentials('github')  // your existing credential ID
+        // Jenkins credentials ID for GitHub username + PAT
+        GIT_CREDENTIALS = credentials('github')
     }
 
     stages {
-        stage('Checkout') {
+
+        stage('Clone Repository') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/pkz15/TestngFramework.git',
@@ -14,34 +16,14 @@ pipeline {
             }
         }
 
-        stage('Fetch & Merge') {
+        stage('Run Tests') {
             steps {
                 bat """
+                REM Navigate to workspace
                 cd %WORKSPACE%
-                git fetch origin
-                git checkout -B main origin/main
-                git merge origin/main
-                IF ERRORLEVEL 1 (
-                    echo Merge conflicts found. Please resolve manually
-                    exit /b 1
-                )
-                """
-            }
-        }
 
-        stage('Add & Commit Changes') {
-            steps {
-                bat """
-                git add .
-                git commit -m "Automated Jenkins commit" || echo No changes to commit
-                """
-            }
-        }
-
-        stage('Push Changes') {
-            steps {
-                bat """
-                git push https://%GIT_CREDENTIALS_USR%:%GIT_CREDENTIALS_PSW%@github.com/pkz15/TestngFramework.git main
+                REM Run TestNG tests (if you have testng.xml in repo)
+                java -cp "lib/*;bin" org.testng.TestNG testng.xml
                 """
             }
         }
