@@ -56,13 +56,13 @@ pipeline {
             cleanWs()  // Clean workspace after every build
             archiveArtifacts artifacts: 'reports/ExtentReport.html', allowEmptyArchive: true
 
-            // Optional: Publish HTML report
+            // Publish HTML report in Jenkins UI
             publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
-                reportDir: 'target',
-                reportFiles: 'ExtentReports.html',
+                reportDir: 'reports',
+                reportFiles: 'ExtentReport.html',
                 reportName: 'Extent Report'
             ])
         }
