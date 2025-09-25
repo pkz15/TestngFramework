@@ -1,11 +1,20 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="RegressionSuite" parallel="tests" thread-count="3">
-    <parameter name="browser" value="chrome"/>
-    <test name="LoginTest_Chrome">
-        <parameter name="browser" value="chrome"/>
+    
+   
+
+    <!-- Register Listener for ExtentReports -->
+    <listeners>
+        <listener class-name="com.framework.base.TestListener"/>
+    </listeners>
+
+    <!-- Test 1 -->
+    <test name="ContactUsTest_Edge">
+        <!-- Optional test-level parameter (overrides suite-level if needed) -->
+      
         <classes>
             <class name="com.framework.tests.contactUsTestPage"/>
         </classes>
     </test>
-    
+
 </suite>

@@ -33,7 +33,7 @@ public class contactUsPage {
         driver.findElement(contactUs).click();
     }
     
-    public void dropUs() throws Throwable
+    public String dropUs() throws Throwable
     {
     	driver.findElement(dropUs).click();
     	String Names = config.getProperty("name");
@@ -46,7 +46,8 @@ public class contactUsPage {
     	driver.findElement(send).click();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     	WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(confirmation));
-    	//Assert.assertEquals(element.getText(), "Thank you for your inquiry! We will get back to you within 24 hours.");
+    	return element.getText();
+    	
     	
     }
     

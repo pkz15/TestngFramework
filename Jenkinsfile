@@ -54,17 +54,21 @@ pipeline {
     post {
         always {
             cleanWs()  // Clean workspace after every build
-            archiveArtifacts artifacts: 'reports/ExtentReport.html', allowEmptyArchive: true
-
-            // Publish HTML report in Jenkins UI
-            publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'reports',
-                reportFiles: 'ExtentReport.html',
-                reportName: 'Extent Report'
-            ])
+             def reportFiles = findFiles(glob: 'reports/*.html')
+                if (reportFiles.length > 0) {
+                    archiveArtifacts artifacts: 'reports/*.html', allowEmptyArchive: true
+                    // Publish HTML report using HTML Publisher plugin
+                    publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'reports',
+                        reportFiles: '*.html',
+                        reportName: 'Extent Reports'
+                    ])
+                } else {
+                    echo "No Extent reports found to archive!"
+                }
         }
         success {
             echo 'Build Successful!'

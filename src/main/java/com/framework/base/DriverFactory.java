@@ -2,6 +2,9 @@ package com.framework.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
@@ -11,10 +14,18 @@ public class DriverFactory {
         if (driver == null) {
             switch (browser.toLowerCase()) {
                 case "chrome":
-                    WebDriverManager.chromedriver().setup();
+//                    WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
                     break;
-                // add firefox/edge if needed
+                case "edge":
+//                    WebDriverManager.edgedriver().browserVersion("140.0.3485.81") .setup();
+                    driver = new EdgeDriver();
+                    break;
+                case "firefox":
+//                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();;
+                    break;
+                
             }
             driver.manage().window().maximize();
         }
