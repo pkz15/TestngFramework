@@ -5,6 +5,11 @@ environment {
         GIT_CREDENTIALS = credentials('github')
         TESTNG_JAR = 'lib/testng-7.8.1.jar'
     }
+    tools
+    {
+        jdfk 'JAVA_HOME'
+        maven 'Maven'
+    }
     stages {
         stage('Checkout') {
             
