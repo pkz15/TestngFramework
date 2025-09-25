@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your source code from a version control system (e.g., Git)
-                git 'https://github.com/your-repo/your-project.git' 
+                git 'https://github.com/pkz15/TestngFramework.git' 
             }
         }
 
