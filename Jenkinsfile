@@ -2,21 +2,16 @@ pipeline {
     agent any
 
     environment {
-        // Jenkins credentials ID for GitHub (username + PAT)
-        GIT_CREDENTIALS = credentials('github')
-        // Path to Maven settings.xml with local repo configuration
-        MAVEN_SETTINGS = 'C:\\Users\\premm\\.m2\\settings.xml'
-        // Optional: override Maven local repo inside workspace
-        MAVEN_LOCAL_REPO = "${WORKSPACE}\\.m2repo"
+        GIT_CREDENTIALS = credentials('github')              // GitHub credentials
+        MAVEN_SETTINGS = 'C:\\Users\\premm\\.m2\\settings.xml' // Optional if using custom settings
     }
 
     tools {
-        jdk 'JAVA_HOME'       // Must match your Jenkins JDK installation name
-        maven 'Maven'         // Must match your Jenkins Maven installation name
+        jdk 'JAVA_HOME'       // Name of your JDK installation in Jenkins
+        maven 'Maven'         // Name of your Maven installation in Jenkins
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 echo 'Cloning repository...'
@@ -34,19 +29,17 @@ pipeline {
             }
         }
 
-        stage('Build & Test') {
+        stage('Build and Test') {
             steps {
-                echo 'Running Maven clean and test using local repository...'
-                // Use -s to point to your settings.xml with local repo
-                // Use -Dmaven.repo.local to force Maven to use workspace-local repo
-                bat "mvn clean test -s \"${MAVEN_SETTINGS}\" -Dmaven.repo.local=\"${MAVEN_LOCAL_REPO}\""
+                echo 'Running Maven clean and test with TestNG suite...'
+                bat 'mvn clean test -DsuiteXmlFiles=src/test/resources/testng.xml'
             }
         }
 
         stage('Publish TestNG Results') {
             steps {
                 echo 'Publishing TestNG results...'
-                // Ensure path matches where surefire-plugin writes testng-results.xml
+                // TestNG plugin parses the XML generated in target/surefire-reports
                 testngResults pattern: '**/target/surefire-reports/testng-results.xml'
             }
         }
@@ -57,10 +50,10 @@ pipeline {
             cleanWs()  // Clean workspace after every build
         }
         success {
-            echo 'Build Successful!'
+            echo 'Build Successful! ✅'
         }
         failure {
-            echo 'Build Failed!  Check logs for errors.'
+            echo 'Build Failed! ❌ Check logs for errors.'
         }
     }
 }
