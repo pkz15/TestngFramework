@@ -7,7 +7,7 @@ environment {
     }
     tools
     {
-        jdfk 'JAVA_HOME'
+        jdf'JAVA_HOME'
         maven 'Maven'
     }
     stages {
