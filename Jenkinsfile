@@ -1,43 +1,61 @@
 pipeline {
     agent any
+
     environment {
-        GIT_CREDENTIALS = credentials('github')  // Your GitHub credentials ID
+        // Jenkins credentials ID for GitHub (username + PAT)
+        GIT_CREDENTIALS = credentials('github')
     }
+
     tools {
-        jdk 'JAVA_HOME'      // Name from Jenkins Global Tool Configuration
-        maven 'Maven'    // Name from Jenkins Global Tool Configuration
+        jdk 'JAVA_HOME'       // Must match your Jenkins JDK installation name
+        maven 'Maven'         // Must match your Jenkins Maven installation name
     }
+
     stages {
+
         stage('Checkout') {
             steps {
+                echo 'Cloning repository...'
                 git branch: 'main',
                     url: 'https://github.com/pkz15/TestngFramework.git',
                     credentialsId: 'github'
             }
         }
 
-        stage('Build and Test') {
+        stage('Verify Tools') {
             steps {
-                bat 'mvn clean test'  // Runs TestNG tests through Maven
+                echo 'Checking Java and Maven versions...'
+                bat 'java -version'
+                bat 'mvn -version'
+            }
+        }
+
+        stage('Build & Test') {
+            steps {
+                echo 'Running Maven clean and test...'
+                // Force Maven to update dependencies in case of missing artifacts
+                bat 'mvn clean test -U'
             }
         }
 
         stage('Publish TestNG Results') {
             steps {
-                publishTestNGResults testResultsPattern: '**/target/surefire-reports/testng-results.xml'
+                echo 'Publishing TestNG results...'
+                // TestNG plugin parses testng-results.xml in the target folder
+                testngResults pattern: '**/target/surefire-reports/testng-results.xml'
             }
         }
     }
 
     post {
         always {
-            cleanWs() 
-        }
-        failure {
-            echo 'Build failed! Check logs for details.'
+            cleanWs()  // Clean workspace after every build
         }
         success {
-            echo 'Build successful!'
+            echo 'Build Successful! ✅'
+        }
+        failure {
+            echo 'Build Failed! ❌ Check logs for errors.'
         }
     }
 }
