@@ -2,17 +2,15 @@ pipeline {
     agent any
 
     environment {
-        // Jenkins credentials ID for GitHub (username + PAT)
         GIT_CREDENTIALS = credentials('github')
     }
 
     tools {
-        jdk 'JAVA_HOME'    // Jenkins JDK installation name
-        maven 'Maven'      // Jenkins Maven installation name
+        jdk 'JAVA_HOME'
+        maven 'Maven'
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 echo 'Cloning repository...'
@@ -32,32 +30,31 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                echo 'Running Maven clean install and test...'
+                echo 'Running Maven clean test...'
                 bat 'mvn clean test'
             }
         }
 
-       stage('Publish TestNG Results') {
-    steps {
-       junit '**/target/surefire-reports/*.xml'
-    }
-}
-        stage('Archive TestNG HTML Report') {
-    steps {
-        archiveArtifacts artifacts: 'test-output/**', fingerprint: true
-    }
-}
+        stage('Publish TestNG Results') {
+            steps {
+                junit '**/target/surefire-reports/*.xml'
+            }
+        }
 
-  
+        stage('Archive TestNG HTML Report') {
+            steps {
+                archiveArtifacts artifacts: 'test-output/**', fingerprint: true
+            }
+        }
     }
 
     post {
         always {
-            cleanWs()  // Clean workspace after every build
-             def reportFiles = findFiles(glob: 'reports/*.html')
+            script {
+                // Archive all Extent HTML reports
+                def reportFiles = findFiles(glob: 'reports/*.html')
                 if (reportFiles.length > 0) {
                     archiveArtifacts artifacts: 'reports/*.html', allowEmptyArchive: true
-                    // Publish HTML report using HTML Publisher plugin
                     publishHTML([
                         allowMissing: false,
                         alwaysLinkToLastBuild: true,
@@ -69,7 +66,9 @@ pipeline {
                 } else {
                     echo "No Extent reports found to archive!"
                 }
+            }
         }
+
         success {
             echo 'Build Successful!'
         }
