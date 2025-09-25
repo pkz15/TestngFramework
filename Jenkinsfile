@@ -37,11 +37,12 @@ pipeline {
             }
         }
 
-        stage('Publish TestNG Results') {
+       stage('Publish TestNG Results') {
     steps {
-        echo 'Publishing TestNG results...'
-        // Works for both default TestNG and Maven Surefire
-        testngResults pattern: '**/test-output/testng-results.xml, **/target/surefire-reports/testng-results.xml'
+        publishTestNGResults testNGpattern: '**/test-output/testng-results.xml'
+    }
+}
+
     }
 }
     }
