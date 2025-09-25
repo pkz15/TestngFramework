@@ -2,16 +2,14 @@ pipeline {
     agent any
 
     environment {
-        // Jenkins credentials ID for GitHub (username + PAT)
         GIT_CREDENTIALS = credentials('github')
-        MAVEN_SETTINGS = 'C:\\Users\\premm\\.m2\\settings.xml'
-        LOCAL_M2_REPO = 'C:\\MavenLocalRepo'     
-       
+        // MAVEN_SETTINGS = 'C:\\Users\\premm\\.m2\\settings.xml'
+        // LOCAL_M2_REPO = 'C:\\MavenLocalRepo'
     }
 
     tools {
-        jdk 'JAVA_HOME'    // Jenkins JDK installation name
-        maven 'Maven'      // Jenkins Maven installation name
+        jdk 'JAVA_HOME'
+        maven 'Maven'
     }
 
     stages {
@@ -35,15 +33,16 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                echo 'Running Maven clean install and test with local repo...'
-                bat " mvn clean test -s "${MAVEN_SETTINGS}" -Dmaven.repo.local="${LOCAL_M2_REPO}"
+                echo 'Running Maven clean test with local repo...'
+                // Correct way to handle Windows paths
+                // bat "mvn clean test -s \"${MAVEN_SETTINGS}\" -Dmaven.repo.local=\"${LOCAL_M2_REPO}\""
+                bat"mvn clean test"
             }
         }
 
         stage('Publish TestNG Results') {
             steps {
                 echo 'Publishing TestNG results...'
-                // TestNG plugin parses testng-results.xml in the target folder
                 testngResults pattern: '**/target/surefire-reports/testng-results.xml'
             }
         }
@@ -51,13 +50,13 @@ pipeline {
 
     post {
         always {
-            cleanWs()  // Clean workspace after every build
+            cleanWs()
         }
         success {
-            echo 'Build Successful! '
+            echo 'Build Successful! ✅'
         }
         failure {
-            echo 'Build Failed!  Check logs for errors.'
+            echo 'Build Failed! ❌ Check logs.'
         }
     }
 }
