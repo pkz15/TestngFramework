@@ -54,6 +54,17 @@ pipeline {
     post {
         always {
             cleanWs()  // Clean workspace after every build
+            archiveArtifacts artifacts: 'reports/ExtentReport.html', allowEmptyArchive: true
+
+            // Optional: Publish HTML report
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'target',
+                reportFiles: 'ExtentReports.html',
+                reportName: 'Extent Report'
+            ])
         }
         success {
             echo 'Build Successful!'
