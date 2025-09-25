@@ -1,11 +1,19 @@
 pipeline {
     agent any // Specifies that the pipeline can run on any available agent
-
+environment {
+        // Jenkins credentials ID for GitHub username + PAT
+        GIT_CREDENTIALS = credentials('github')
+        TESTNG_JAR = 'lib/testng-7.8.1.jar'
+    }
     stages {
         stage('Checkout') {
-            steps {
+            
                 // Checkout your source code from a version control system (e.g., Git)
-                git 'https://github.com/pkz15/TestngFramework.git' 
+              steps {
+                git branch: 'main',
+                    url: 'https://github.com/pkz15/TestngFramework.git',
+                    credentialsId: 'github'
+            
             }
         }
 
