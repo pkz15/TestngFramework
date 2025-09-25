@@ -3,6 +3,7 @@ package com.framework.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,8 +23,6 @@ public class contactUsPage {
     private By send = By.xpath("//button[@type='submit']");
     private By confirmation = By.xpath("//*[@data-aid='CONTACT_FORM_SUBMIT_SUCCESS_MESSAGE']");
     
-
-    // Pass driver from BaseTest, do NOT call DriverFactory here
     public contactUsPage(WebDriver driver) {
         this.driver = driver;
         config = new ConfigReader();
@@ -37,14 +36,16 @@ public class contactUsPage {
     {
     	driver.findElement(dropUs).click();
     	String Names = config.getProperty("name");
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//    	wait.until(ExpectedConditions.visibilityOfElementLocated(Name));
     	Thread.sleep(3000);
-    	
     	driver.findElement(Name).sendKeys(Names);
     	driver.findElement(Email).sendKeys(config.getProperty("email"));
     	driver.findElement(Phone).sendKeys(config.getProperty("phone"));
     	driver.findElement(Message).sendKeys(config.getProperty("message"));
-    	driver.findElement(send).click();
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//    	driver.findElement(send).click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", driver.findElement(send));
     	WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(confirmation));
     	return element.getText();
     	

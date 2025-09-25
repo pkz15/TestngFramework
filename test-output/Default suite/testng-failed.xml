@@ -5,7 +5,7 @@
     <classes>
       <class name="com.framework.tests.contactUsTestPage">
         <methods>
-          <include name="verifyLogin"/>
+          <include name="formValidation"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>

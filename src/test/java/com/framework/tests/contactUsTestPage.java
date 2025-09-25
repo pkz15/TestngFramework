@@ -9,9 +9,9 @@ import com.framework.pages.contactUsPage;
 public class contactUsTestPage extends BaseTest {
 
     @Test
-    public void verifyLogin() throws Throwable {
+    public void formValidation() throws Throwable {
     	
-    	contactUsPage contactus = new contactUsPage(driver); // Use driver from BaseTest
+    	contactUsPage contactus = new contactUsPage(driver); 
     	contactus.clickContactUs();
         String reponse=contactus.dropUs();
         Assert.assertEquals(reponse, "Thank you for your inquiry! We will get back to you within 24 hours.");

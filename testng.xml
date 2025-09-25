@@ -3,15 +3,28 @@
     
    
 
-    <!-- Register Listener for ExtentReports -->
+    <!-- Listener for ExtentReports -->
     <listeners>
         <listener class-name="com.framework.base.TestListener"/>
     </listeners>
 
-    <!-- Test 1 -->
     <test name="ContactUsTest_Edge">
-        <!-- Optional test-level parameter (overrides suite-level if needed) -->
+      <parameter name="browser" value="chrome" />
       
+        <classes>
+            <class name="com.framework.tests.contactUsTestPage"/>
+        </classes>
+    </test>
+     <test name="SearchTest_Chrome">
+      
+        <classes>
+            <class name="com.framework.tests.contactUsTestPage"/>
+        </classes>
+    </test>
+
+    <!-- Test 3 -->
+    <test name="CheckoutTest_Firefox">
+     <parameter name="browser" value="chrome" />
         <classes>
             <class name="com.framework.tests.contactUsTestPage"/>
         </classes>

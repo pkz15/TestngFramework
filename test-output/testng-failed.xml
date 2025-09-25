@@ -5,10 +5,11 @@
     <listener class-name="com.framework.base.TestListener"/>
   </listeners>
   <test thread-count="3" parallel="tests" name="ContactUsTest_Edge(failed)">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.framework.tests.contactUsTestPage">
         <methods>
-          <include name="verifyLogin"/>
+          <include name="formValidation"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
