@@ -3,7 +3,8 @@ pipeline {
 
     environment {
         // Jenkins credentials ID for GitHub username + PAT
-        GIT_CREDENTIALS = credentials('github')
+        GIT_CREDENTIALS = credentials('github-creds')
+        TESTNG_JAR = 'lib/testng-7.8.1.jar'
     }
 
     stages {
@@ -16,13 +17,36 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Prepare Lib') {
             steps {
                 bat """
-                REM Navigate to workspace
-                cd %WORKSPACE%
+                REM Create lib folder if not exists
+                if not exist lib mkdir lib
 
-                REM Run TestNG tests (if you have testng.xml in repo)
+                REM Download TestNG JAR if not exists
+                if not exist %TESTNG_JAR% (
+                    powershell -Command "Invoke-WebRequest -Uri 'https://repo1.maven.org/maven2/org/testng/testng/7.8.1/testng-7.8.1.jar' -OutFile '%TESTNG_JAR%'"
+                )
+                """
+            }
+        }
+
+        stage('Compile Java') {
+            steps {
+                bat """
+                REM Create bin folder for compiled classes
+                if not exist bin mkdir bin
+
+                REM Compile all Java files in src using TestNG JAR
+                javac -d bin -cp "lib/*" src\\*.java
+                """
+            }
+        }
+
+        stage('Run TestNG') {
+            steps {
+                bat """
+                REM Run TestNG tests
                 java -cp "lib/*;bin" org.testng.TestNG testng.xml
                 """
             }
