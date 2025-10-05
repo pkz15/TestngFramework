@@ -12,18 +12,16 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import com.aventstack.extentreports.Status;
-import com.framework.base.BaseTest;
+import com.framework.base.BaseApi;
 import com.framework.base.DriverSetup;
 
 public class TestListener implements ITestListener {
 	private Map<String, Long> startTimes = new HashMap<>();
 
 	private String captureScreenshot(WebDriver driver, String testName) {
-		boolean API=true;
 		try {
 			TakesScreenshot ts = (TakesScreenshot) driver;
 			File source = ts.getScreenshotAs(OutputType.FILE);
-			API=false;
 			String dir = System.getProperty("user.dir") + "/screenshots";
 			File folder = new File(dir);
 			if (!folder.exists())
@@ -33,11 +31,16 @@ public class TestListener implements ITestListener {
 			FileUtils.copyFile(source, finalDest);
 			return dest;
 		} catch (Exception e) {
-			if (API) {
-				ExtentReportManager.getTest().log(Status.INFO, "No Screenshot for API Validation");
-			} else {
-				ExtentReportManager.getTest().log(Status.WARNING, "Screenshot capture failed: " + e.getMessage());
+			if (!new BaseApi().isApitest)
+			{
+				ExtentReportManager.getTest().log(Status.INFO, "API Testing No Screenshot");
 			}
+			else
+			{
+				ExtentReportManager.getTest().log(Status.WARNING, "Screenshot capture failed: " + e.getMessage());
+				
+			}
+			
 			return null;
 		}
 	}
@@ -59,15 +62,14 @@ public class TestListener implements ITestListener {
 		ExtentReportManager.getTest().log(Status.PASS, "Test Passed");
 		ExtentReportManager.getTest().log(Status.INFO, "Duration: " + duration + " ms");
 		ExtentReportManager.getTest().log(Status.INFO, "Moving to next method...");
-		BaseTest base = (BaseTest) result.getInstance();
-		if (screenshotPath != null && base.isApitest) {
+		if (screenshotPath != null && !(new BaseApi().isApitest)) {
 			try {
 				ExtentReportManager.getTest().addScreenCaptureFromPath(screenshotPath);
 			} catch (Exception e) {
 				ExtentReportManager.getTest().log(Status.WARNING, "Failed to attach screenshot: " + e.getMessage());
 			}
 		} else {
-			ExtentReportManager.getTest().log(Status.INFO, "API Validation Done....");
+			ExtentReportManager.getTest().log(Status.INFO, "No Screenshot for API Validation..");
 		}
 	}
 

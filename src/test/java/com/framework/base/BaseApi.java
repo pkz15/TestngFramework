@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 public class BaseApi extends BaseTest{
 
     protected RequestSpecification requestSpec;
+    public boolean isApitest;
 
     @BeforeClass(alwaysRun = true)
     public void setupApi() {
