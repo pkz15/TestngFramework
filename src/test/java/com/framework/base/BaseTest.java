@@ -6,10 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 public class BaseTest {
-
     protected WebDriver driver;
     protected ConfigReader config;
-    @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
         config = new ConfigReader(); 

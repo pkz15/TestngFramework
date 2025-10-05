@@ -1,0 +1,25 @@
+package com.framework.base;
+import org.testng.annotations.BeforeClass;
+
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
+public class BaseApi  {
+    protected RequestSpecification requestSpec;
+
+    @BeforeClass(alwaysRun = true)
+    public void setupApi() {
+        String baseUrl = "https://jsonplaceholder.typicode.com"; // or read from config.properties
+
+        RestAssured.baseURI = baseUrl;
+
+        requestSpec = new RequestSpecBuilder()
+                .setBaseUri(baseUrl)
+                .setContentType(ContentType.JSON)
+                .addHeader("Accept", "application/json")
+                .build();
+
+        System.out.println("API Base URL: " + baseUrl);
+    }
+}

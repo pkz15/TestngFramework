@@ -4,16 +4,15 @@
   <listeners>
     <listener class-name="com.framework.base.TestListener"/>
   </listeners>
-  <test thread-count="3" parallel="tests" name="ContactUsTest_Edge(failed)">
-    <parameter name="browser" value="chrome"/>
+  <test thread-count="3" parallel="tests" name="BasicPageValidation(failed)">
     <classes>
-      <class name="com.framework.tests.contactUsTestPage">
+      <class name="com.framework.tests.UI.ContactusTest">
         <methods>
-          <include name="formValidation"/>
           <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="FormSubmission"/>
         </methods>
-      </class> <!-- com.framework.tests.contactUsTestPage -->
+      </class> <!-- com.framework.tests.UI.ContactusTest -->
     </classes>
-  </test> <!-- ContactUsTest_Edge(failed) -->
+  </test> <!-- BasicPageValidation(failed) -->
 </suite> <!-- Failed suite [RegressionSuite] -->

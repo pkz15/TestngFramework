@@ -1,33 +1,23 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="RegressionSuite" parallel="tests" thread-count="3">
-    
-   
-
-    <!-- Listener for ExtentReports -->
     <listeners>
         <listener class-name="com.framework.base.TestListener"/>
+
     </listeners>
 
-    <test name="ContactUsTest_Edge">
-      <parameter name="browser" value="chrome" />
-      
+    <test name="BasicPageValidation">
         <classes>
-            <class name="com.framework.tests.contactUsTestPage"/>
+            <class name="com.framework.tests.UI.ContactusTest"/>
+             <class name="com.framework.tests.UI.HomePageTest"/>
+             <class name="com.framework.tests.UI.ServiceTest"/>
         </classes>
     </test>
-     <test name="SearchTest_Chrome">
-      
+    <test name="API Validation">
         <classes>
-            <class name="com.framework.tests.contactUsTestPage"/>
+              <class name="com.framework.tests.API.ApiTest"/>
         </classes>
     </test>
-
-    <!-- Test 3 -->
-    <test name="CheckoutTest_Firefox">
-     <parameter name="browser" value="chrome" />
-        <classes>
-            <class name="com.framework.tests.contactUsTestPage"/>
-        </classes>
-    </test>
+     
+    
 
 </suite>

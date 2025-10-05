@@ -51,7 +51,7 @@ pipeline {
     post {
         always {
             script {
-                // Archive all Extent HTML reports
+                // Archive all Extent HTML reportsa
                 def reportFiles = findFiles(glob: 'reports/*.html')
                 if (reportFiles.length > 0) {
                     archiveArtifacts artifacts: 'reports/*.html', allowEmptyArchive: true
