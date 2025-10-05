@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-05T15:02:36 IST" name="RegressionSuite" finished-at="2025-10-05T15:02:36 IST" duration-ms="0">
+  <suite started-at="2025-10-05T19:10:01 IST" name="RegressionSuite" finished-at="2025-10-05T19:10:23 IST" duration-ms="21904">
     <groups>
     </groups>
+    <test started-at="2025-10-05T19:10:01 IST" name="BasicPageValidation" finished-at="2025-10-05T19:10:23 IST" duration-ms="21904">
+      <class name="com.framework.tests.UI.ContactusTest">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:com.framework.tests.UI.ContactusTest@2d1ef81a]" started-at="2025-10-05T19:10:09 IST" name="setUp" finished-at="2025-10-05T19:10:12 IST" duration-ms="2563" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="FormSubmission()[pri:3, instance:com.framework.tests.UI.ContactusTest@2d1ef81a]" started-at="2025-10-05T19:10:12 IST" name="FormSubmission" finished-at="2025-10-05T19:10:23 IST" duration-ms="10918" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FormSubmission -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.UI.ContactusTest@2d1ef81a]" started-at="2025-10-05T19:10:23 IST" name="tearDown" finished-at="2025-10-05T19:10:23 IST" duration-ms="250" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.framework.tests.UI.ContactusTest -->
+      <class name="com.framework.tests.UI.HomePageTest">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:com.framework.tests.UI.HomePageTest@3857f613]" started-at="2025-10-05T19:10:01 IST" name="setUp" finished-at="2025-10-05T19:10:05 IST" duration-ms="3471" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="HomePageBannerTextValidation()[pri:1, instance:com.framework.tests.UI.HomePageTest@3857f613]" started-at="2025-10-05T19:10:05 IST" name="HomePageBannerTextValidation" finished-at="2025-10-05T19:10:05 IST" duration-ms="362" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageBannerTextValidation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.UI.HomePageTest@3857f613]" started-at="2025-10-05T19:10:06 IST" name="tearDown" finished-at="2025-10-05T19:10:06 IST" duration-ms="149" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.framework.tests.UI.HomePageTest -->
+      <class name="com.framework.tests.UI.ServiceTest">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:com.framework.tests.UI.ServiceTest@198b6731]" started-at="2025-10-05T19:10:06 IST" name="setUp" finished-at="2025-10-05T19:10:08 IST" duration-ms="2373" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="ServicePageValidation()[pri:2, instance:com.framework.tests.UI.ServiceTest@198b6731]" started-at="2025-10-05T19:10:08 IST" name="ServicePageValidation" finished-at="2025-10-05T19:10:09 IST" duration-ms="846" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ServicePageValidation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.UI.ServiceTest@198b6731]" started-at="2025-10-05T19:10:09 IST" name="tearDown" finished-at="2025-10-05T19:10:09 IST" duration-ms="185" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.framework.tests.UI.ServiceTest -->
+    </test> <!-- BasicPageValidation -->
   </suite> <!-- RegressionSuite -->
 </testng-results>

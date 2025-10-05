@@ -9,15 +9,22 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverSetup {
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-	public static WebDriver initDriver(String browser) {
+	public static WebDriver initDriver(String browser, String Headless) {
 		if (driver.get() == null) {
 			switch (browser.toLowerCase()) {
 			case "chrome":
 				ChromeOptions options = new ChromeOptions();
-                	options.addArguments("--headless=new");
-				options.addArguments("--window-size=1920,1080");
-                	options.addArguments("--disable-gpu");
-				driver.set(new ChromeDriver(options));
+				if(Headless.toLowerCase().equals("true"))
+				{
+					options.addArguments("--headless=new");
+					options.addArguments("--window-size=1920,1080");
+	                options.addArguments("--disable-gpu");
+					driver.set(new ChromeDriver(options));
+				}
+				else
+				{
+					driver.set(new ChromeDriver());
+				}
 				break;
 			case "edge":
 				driver.set(new EdgeDriver());

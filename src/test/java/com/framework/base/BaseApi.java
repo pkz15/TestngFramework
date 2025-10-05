@@ -12,7 +12,7 @@ public class BaseApi extends BaseTest{
 
     @BeforeClass(alwaysRun = true)
     public void setupApi() {
-        String baseUrl = "https://jsonplaceholder.typicode.com"; // or read from config.properties
+        String baseUrl = "https://jsonplaceholder.typicode.com"; 
 
         RestAssured.baseURI = baseUrl;
 
