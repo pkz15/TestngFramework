@@ -22,6 +22,6 @@ public class BaseApi {
                 .addHeader("Accept", "application/json")
                 .build();
 
-        System.out.println("✅ API Base URL: " + baseUrl);
+        System.out.println("API Base URL: " + baseUrl);
     }
 }
