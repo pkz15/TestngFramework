@@ -1,6 +1,7 @@
 package com.framework.pages;
 
 import java.time.Duration;
+import java.util.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,6 +27,7 @@ public class contactUsPage {
     private By Message = By.cssSelector("textarea[placeholder='Message']");
     private By send = By.xpath("//button[@type='submit']");
     private By confirmation = By.xpath("//*[@data-aid='CONTACT_FORM_SUBMIT_SUCCESS_MESSAGE']");
+    private By Cookies = By.xpath("//*[@data-aid='FOOTER_COOKIE_CLOSE_RENDERED']");
     public contactUsPage(WebDriver driver) {
         this.driver = driver;
         config = new ConfigReader();
@@ -36,7 +38,6 @@ public class contactUsPage {
     public void clickContactUs() {
     	try {
             WebElement contactUs = wait.until(ExpectedConditions.presenceOfElementLocated(contactUslink));
-            
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", contactUs);
             Thread.sleep(300); 
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", contactUs);
@@ -67,6 +68,44 @@ public class contactUsPage {
     	
     }
     
+    public  String dropUs(List<Map<String, String>> allData,String filePath) throws InterruptedException
+    
+    {
+    	String confirmationText = "";
+    	AcceptCookies();
+    	for (Map<String, String> row : allData) {
+            driver.findElement(dropUs).click();
+            Thread.sleep(2000);
+            String name = row.get("Name");
+            String email = row.get("Email");
+            String phone = row.get("Phone");
+            String message = row.get("Message");
+            driver.findElement(Name).sendKeys(name);
+            driver.findElement(Email).sendKeys(email);
+            driver.findElement(Phone).sendKeys(phone);
+            driver.findElement(Message).sendKeys(message);
+            uploadFile(filePath);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();", driver.findElement(send));
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(confirmation));
+            confirmationText = element.getText();
+            if (allData.size() > 1) {
+                    System.out.println("Multiple rows detected: " + allData.size());
+                    clickContactUs();
+
+            }
+            else
+            {
+            	System.out.println("Single rows detected");
+            }
+           
+        }
+    	
+    	
+    	return confirmationText;
+    	
+    }
+    
     public void uploadFile(String filePath) throws InterruptedException {
         try {
         	WebElement fileInput = driver.findElement(UploadButton);
@@ -75,6 +114,17 @@ public class contactUsPage {
             System.out.println("File upload input not found");
             throw e;
         }
+    }
+    
+    public void AcceptCookies()
+    {
+    	 try {
+    	        WebElement acceptBtn = wait.until(ExpectedConditions.elementToBeClickable(Cookies));
+    	        acceptBtn.click();
+    	        System.out.println("Cookie popup accepted.");
+    	    } catch (Exception e) {
+    	        System.out.println("No cookie popup appeared.");
+    	    }
     }
     
     

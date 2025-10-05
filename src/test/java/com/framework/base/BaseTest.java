@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 public class BaseTest {
+	public boolean isApitest=false; 
     protected WebDriver driver;
     protected ConfigReader config;
     @BeforeMethod(alwaysRun = true)

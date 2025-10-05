@@ -9,7 +9,8 @@ import static io.restassured.RestAssured.given;
 public class ApiTest extends BaseApi {
 	
     @Test
-    public void testGetUsers() {
+    public void GetUsers() {
+    	
         Response res = given()
                 .spec(requestSpec)
                 .when()
@@ -22,7 +23,7 @@ public class ApiTest extends BaseApi {
     }
 
     @Test
-    public void testCreatePost() {
+    public void CreatePostUser() {
         String body = "{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 }";
 
         Response res = given()

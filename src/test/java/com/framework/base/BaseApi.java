@@ -6,7 +6,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeClass;
 
-public class BaseApi {
+public class BaseApi extends BaseTest{
 
     protected RequestSpecification requestSpec;
 
@@ -23,5 +23,6 @@ public class BaseApi {
                 .build();
 
         System.out.println("API Base URL: " + baseUrl);
+        isApitest=true;
     }
 }
