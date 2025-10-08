@@ -58,7 +58,6 @@ public class contactUsPage {
     	driver.findElement(Email).sendKeys(config.getProperty("email"));
     	driver.findElement(Phone).sendKeys(config.getProperty("phone"));
     	driver.findElement(Message).sendKeys(config.getProperty("message"));
-//    	driver.findElement(send).click();
     	uploadFile(filePath);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", driver.findElement(send));

@@ -31,16 +31,11 @@ public class TestListener implements ITestListener {
 			FileUtils.copyFile(source, finalDest);
 			return dest;
 		} catch (Exception e) {
-			if (!new BaseApi().isApitest)
-			{
+			if (!new BaseApi().isApitest) {
 				ExtentReportManager.getTest().log(Status.INFO, "API Testing No Screenshot");
-			}
-			else
-			{
+			} else {
 				ExtentReportManager.getTest().log(Status.WARNING, "Screenshot capture failed: " + e.getMessage());
-				
 			}
-			
 			return null;
 		}
 	}

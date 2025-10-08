@@ -26,11 +26,11 @@ public class ServicesPage {
 
     public String ServicesValidation() {
     	try {
-            WebElement contactUs = wait.until(ExpectedConditions.presenceOfElementLocated(Serviceslink));
+            WebElement Service = wait.until(ExpectedConditions.presenceOfElementLocated(Serviceslink));
             
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", contactUs);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Service);
             Thread.sleep(300); 
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", contactUs);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", Service);
         } catch (TimeoutException e) {
             System.out.println("Contact Us element not clickable after 20 seconds in headless mode");
             throw e;

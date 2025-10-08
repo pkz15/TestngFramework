@@ -12,6 +12,8 @@ public class DriverSetup {
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
 	public static WebDriver initDriver(String browser, String Headless) {
+		if(browser.equalsIgnoreCase(null)||browser.equals(""))
+			browser="chrome";
 		if (driver.get() == null) {
 			switch (browser.toLowerCase()) {
 			case "chrome":

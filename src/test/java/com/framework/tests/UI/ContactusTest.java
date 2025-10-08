@@ -16,7 +16,6 @@ public class ContactusTest extends BaseTest {
 		contactus.clickContactUs();
 		String projectPath = System.getProperty("user.dir");
 		String filePath = projectPath + "/src/main/resources/1000_F_634676819_b1bxBejIyThDWBIkga2w3Cl0gTyyOSPL.jpg";
-		// String response=contactus.dropUs(filePath);
 		DataManager dataManager = DataMangerSetup.getDataManager("csv", projectPath + "/src/main/resources/TestData/DataTest.csv", null,
 				null);
 		List<Map<String, String>> allData = dataManager.getAllTestData("Sheet1");
