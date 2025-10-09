@@ -5,6 +5,8 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseTest {
 	protected WebDriver driver;
 	protected ConfigReader config;

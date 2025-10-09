@@ -130,7 +130,8 @@
 				</dependencies>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+						<suiteXmlFile>Regression.xml</suiteXmlFile>
+						<!-- <suiteXmlFile>testng.xml</suiteXmlFile>-->
 						<!-- <suiteXmlFile>testngAPI.xml</suiteXmlFile>-->
 					</suiteXmlFiles>
 				</configuration>

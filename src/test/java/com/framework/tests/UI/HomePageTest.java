@@ -7,7 +7,7 @@ import com.framework.base.BaseTest;
 import com.framework.pages.HomePage;
 
 public class HomePageTest extends BaseTest {
-	@Test(priority = 1)
+	@Test(priority = 1, groups = {"Smoke"})
 	public void HomePageBannerTextValidation() throws Throwable {
 		HomePage homepage = new HomePage(driver);
 		String response = homepage.BannerValidation();

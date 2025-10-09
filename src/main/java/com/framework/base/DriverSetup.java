@@ -28,6 +28,7 @@ public class DriverSetup {
 				}
 				break;
 			case "edge":
+				System.setProperty("webdriver.edge.driver", "src/main/resources/Drivers/msedgedriver.exe");
 				EdgeOptions edgeOptions = new EdgeOptions();
 				if (Headless.equalsIgnoreCase("true")) {
 					edgeOptions.addArguments("--headless=new");

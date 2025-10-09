@@ -1,83 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-08T05:50:10 UTC" name="Default suite" finished-at="2025-10-08T05:51:26 UTC" duration-ms="75039">
+  <suite started-at="2025-10-09T15:07:54 UTC" name="API Suite" finished-at="2025-10-09T15:08:00 UTC" duration-ms="5968">
     <groups>
     </groups>
-    <test started-at="2025-10-08T05:50:10 UTC" name="Default test" finished-at="2025-10-08T05:51:26 UTC" duration-ms="75039">
+    <test started-at="2025-10-09T15:07:54 UTC" name="API Validation" finished-at="2025-10-09T15:08:00 UTC" duration-ms="5968">
       <class name="com.framework.tests.API.ApiTest">
-        <test-method is-config="true" signature="setupApi()[pri:0, instance:com.framework.tests.API.ApiTest@152aa092]" started-at="2025-10-08T05:50:11 UTC" name="setupApi" finished-at="2025-10-08T05:50:12 UTC" duration-ms="1376" status="PASS">
+        <test-method is-config="true" signature="setupApi()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:54 UTC" name="setupApi" finished-at="2025-10-09T15:07:55 UTC" duration-ms="1073" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupApi -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.ApiTest@152aa092]" started-at="2025-10-08T05:50:12 UTC" name="setUp" finished-at="2025-10-08T05:50:12 UTC" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:55 UTC" name="setUp" finished-at="2025-10-09T15:07:55 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="CreatePostUser()[pri:0, instance:com.framework.tests.API.ApiTest@152aa092]" started-at="2025-10-08T05:50:12 UTC" name="CreatePostUser" finished-at="2025-10-08T05:50:16 UTC" duration-ms="4323" status="PASS">
+        <test-method signature="CreatePostUser()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:55 UTC" name="CreatePostUser" finished-at="2025-10-09T15:07:59 UTC" duration-ms="4350" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CreatePostUser -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.ApiTest@152aa092]" started-at="2025-10-08T05:50:16 UTC" name="tearDown" finished-at="2025-10-08T05:50:16 UTC" duration-ms="5" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:59 UTC" name="tearDown" finished-at="2025-10-09T15:07:59 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.ApiTest@152aa092]" started-at="2025-10-08T05:50:16 UTC" name="setUp" finished-at="2025-10-08T05:50:16 UTC" duration-ms="2" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="GetUsers()[pri:0, instance:com.framework.tests.API.ApiTest@152aa092]" started-at="2025-10-08T05:50:16 UTC" name="GetUsers" finished-at="2025-10-08T05:50:17 UTC" duration-ms="386" status="PASS">
+        <test-method signature="GetUsers()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:59 UTC" name="GetUsers" finished-at="2025-10-09T15:07:59 UTC" duration-ms="378" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GetUsers -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.ApiTest@152aa092]" started-at="2025-10-08T05:50:17 UTC" name="tearDown" finished-at="2025-10-08T05:50:17 UTC" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:59 UTC" name="setUp" finished-at="2025-10-09T15:07:59 UTC" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:08:00 UTC" name="tearDown" finished-at="2025-10-09T15:08:00 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.framework.tests.API.ApiTest -->
-      <class name="com.framework.tests.UI.ContactusTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.UI.ContactusTest@5136d012]" started-at="2025-10-08T05:50:42 UTC" name="setUp" finished-at="2025-10-08T05:50:47 UTC" duration-ms="5051" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="FormSubmission()[pri:3, instance:com.framework.tests.UI.ContactusTest@5136d012]" started-at="2025-10-08T05:50:47 UTC" name="FormSubmission" finished-at="2025-10-08T05:51:05 UTC" duration-ms="18172" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FormSubmission -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.UI.ContactusTest@5136d012]" started-at="2025-10-08T05:51:05 UTC" name="tearDown" finished-at="2025-10-08T05:51:07 UTC" duration-ms="1052" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.framework.tests.UI.ContactusTest -->
-      <class name="com.framework.tests.UI.HomePageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.UI.HomePageTest@2beee7ff]" started-at="2025-10-08T05:50:17 UTC" name="setUp" finished-at="2025-10-08T05:50:40 UTC" duration-ms="23029" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="HomePageBannerTextValidation()[pri:1, instance:com.framework.tests.UI.HomePageTest@2beee7ff]" started-at="2025-10-08T05:50:40 UTC" name="HomePageBannerTextValidation" finished-at="2025-10-08T05:50:41 UTC" duration-ms="1335" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- HomePageBannerTextValidation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.UI.HomePageTest@2beee7ff]" started-at="2025-10-08T05:50:41 UTC" name="tearDown" finished-at="2025-10-08T05:50:42 UTC" duration-ms="1020" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.framework.tests.UI.HomePageTest -->
-      <class name="com.framework.tests.UI.ServiceTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.UI.ServiceTest@5939a379]" started-at="2025-10-08T05:51:07 UTC" name="setUp" finished-at="2025-10-08T05:51:10 UTC" duration-ms="3149" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="ServicePageValidation()[pri:2, instance:com.framework.tests.UI.ServiceTest@5939a379]" started-at="2025-10-08T05:51:10 UTC" name="ServicePageValidation" finished-at="2025-10-08T05:51:24 UTC" duration-ms="14800" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ServicePageValidation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.UI.ServiceTest@5939a379]" started-at="2025-10-08T05:51:24 UTC" name="tearDown" finished-at="2025-10-08T05:51:26 UTC" duration-ms="1042" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.framework.tests.UI.ServiceTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- API Validation -->
+  </suite> <!-- API Suite -->
 </testng-results>

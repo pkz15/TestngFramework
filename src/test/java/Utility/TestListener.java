@@ -1,9 +1,9 @@
 package Utility;
-
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -88,6 +88,49 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onFinish(ITestContext context) {
+		int passed = context.getPassedTests().size();
+		int failed = context.getFailedTests().size();
+		int skipped = context.getSkippedTests().size();
+		int total = passed + failed + skipped;
+		double passPercentage = (total > 0) ? ((passed * 100.0) / total) : 0.0;
+		String suiteName = context.getSuite().getName();
+		String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+		ExtentReportManager.createTest("Suite Summary: " + suiteName).log(Status.INFO, " Date: " + today)
+				.log(Status.INFO, "Total Tests: " + total).log(Status.INFO, " Passed: " + passed)
+				.log(Status.INFO, " Failed: " + failed).log(Status.INFO, " Skipped: " + skipped)
+				.log(Status.INFO, "Pass Percentage: " + String.format("%.2f", passPercentage) + "%");
+		System.out.println("Pass Percentage: " + passPercentage);
 		ExtentReportManager.flush();
+		String htmlSnippet = "";
+		if (passPercentage == 100) {
+			htmlSnippet = "<div id='celebration' style='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;'></div>"
+					+ "<script src='https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js'></script>"
+					+ "<script>confetti({particleCount:400,spread:460});</script>"
+					+ "<div style='position:fixed;bottom:10%;width:100%;text-align:center;font-size:28px;color:green;font-weight:bold;'> Perfect Run! All tests passed successfully!</div>";
+		} else if (passPercentage >= 80) {
+			htmlSnippet = "<div style='position:fixed;top:60%;width:100%;text-align:center;font-size:24px;color:orange;'> Great Job! "
+					+ String.format("%.2f", passPercentage) + "% tests passed. Keep improving!</div>";
+		} else {
+			htmlSnippet = "<div style='position:fixed;top:60%;width:100%;text-align:center;font-size:24px;color:red;'> Only "
+					+ String.format("%.2f", passPercentage) + "% passed. Please review failed tests!</div>";
+		}
+		try {
+			File reportsDir = new File("reports");
+			File[] files = reportsDir.listFiles((dir, name) -> name.endsWith(".html"));
+			if (files != null && files.length > 0) {
+				File latestReport = files[0];
+				for (File f : files) {
+					if (f.lastModified() > latestReport.lastModified()) {
+						latestReport = f;
+					}
+				}
+				String content = new String(Files.readAllBytes(latestReport.toPath()));
+				content = content.replace("</body>", htmlSnippet + "\n</body>");
+				Files.write(latestReport.toPath(), content.getBytes(), StandardOpenOption.WRITE,
+						StandardOpenOption.TRUNCATE_EXISTING);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

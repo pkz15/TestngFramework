@@ -6,13 +6,6 @@
   </listeners>
   <test thread-count="3" parallel="tests" name="BasicPageValidation(failed)">
     <classes>
-      <class name="com.framework.tests.UI.ContactusTest">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="FormSubmission"/>
-        </methods>
-      </class> <!-- com.framework.tests.UI.ContactusTest -->
       <class name="com.framework.tests.UI.HomePageTest">
         <methods>
           <include name="HomePageBannerTextValidation"/>
@@ -27,6 +20,13 @@
           <include name="setUp"/>
         </methods>
       </class> <!-- com.framework.tests.UI.ServiceTest -->
+      <class name="com.framework.tests.UI.ContactusTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="FormSubmission"/>
+        </methods>
+      </class> <!-- com.framework.tests.UI.ContactusTest -->
     </classes>
   </test> <!-- BasicPageValidation(failed) -->
 </suite> <!-- Failed suite [RegressionSuite] -->

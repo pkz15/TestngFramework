@@ -21,8 +21,8 @@ public class ExtentReportManager {
 			String timestamp = LocalDateTime.now().format(dtf);
 			String reportPath = "reports/ExtentReport_" + timestamp + ".html";
 			ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);
-			reporter.config().setReportName("Regression Report");
 			reporter.config().setDocumentTitle("Automation Test Results");
+			reporter.config().setReportName("Selenium Automation Suite Report");
 			extent = new ExtentReports();
 			extent.attachReporter(reporter);
 		}
