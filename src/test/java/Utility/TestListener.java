@@ -108,10 +108,10 @@ public class TestListener implements ITestListener {
 					+ "<script>confetti({particleCount:400,spread:460});</script>"
 					+ "<div style='position:fixed;bottom:10%;width:100%;text-align:center;font-size:28px;color:green;font-weight:bold;'> Perfect Run! All tests passed successfully!</div>";
 		} else if (passPercentage >= 80) {
-			htmlSnippet = "<div style='position:fixed;top:60%;width:100%;text-align:center;font-size:24px;color:orange;'> Great Job! "
+			htmlSnippet = "<div style='position:fixed;;bottom:10%;width:100%;text-align:center;font-size:24px;color:orange;'> Great Job! "
 					+ String.format("%.2f", passPercentage) + "% tests passed. Keep improving!</div>";
 		} else {
-			htmlSnippet = "<div style='position:fixed;top:60%;width:100%;text-align:center;font-size:24px;color:red;'> Only "
+			htmlSnippet = "<div style='position:fixed;;bottom:10%;width:100%;text-align:center;font-size:24px;color:red;'> Only "
 					+ String.format("%.2f", passPercentage) + "% passed. Please review failed tests!</div>";
 		}
 		try {
