@@ -102,6 +102,11 @@
 			<artifactId>healenium-web</artifactId>
 			<version>3.3.1</version>
 		</dependency>
+		<dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-testng</artifactId>
+        <version>2.29.0</version>
+    </dependency>
 	</dependencies>
 
 	<build>
@@ -134,6 +139,9 @@
 						<!-- <suiteXmlFile>testng.xml</suiteXmlFile>-->
 						<!-- <suiteXmlFile>testngAPI.xml</suiteXmlFile>-->
 					</suiteXmlFiles>
+					<systemPropertyVariables>
+                    <allure.results.directory>allure-results</allure.results.directory>
+                </systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>

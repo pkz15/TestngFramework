@@ -1,41 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-09T15:07:54 UTC" name="API Suite" finished-at="2025-10-09T15:08:00 UTC" duration-ms="5968">
+  <suite started-at="2025-11-03T14:29:18 UTC" name="API Suite" finished-at="2025-11-03T14:29:24 UTC" duration-ms="6099">
     <groups>
     </groups>
-    <test started-at="2025-10-09T15:07:54 UTC" name="API Validation" finished-at="2025-10-09T15:08:00 UTC" duration-ms="5968">
-      <class name="com.framework.tests.API.ApiTest">
-        <test-method is-config="true" signature="setupApi()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:54 UTC" name="setupApi" finished-at="2025-10-09T15:07:55 UTC" duration-ms="1073" status="PASS">
+    <test started-at="2025-11-03T14:29:18 UTC" name="API Validation" finished-at="2025-11-03T14:29:24 UTC" duration-ms="6099">
+      <class name="com.framework.tests.API.POMAllureReport">
+        <test-method is-config="true" signature="setupApi()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:18 UTC" name="setupApi" finished-at="2025-11-03T14:29:20 UTC" duration-ms="1798" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupApi -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:55 UTC" name="setUp" finished-at="2025-10-09T15:07:55 UTC" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:20 UTC" name="setUp" finished-at="2025-11-03T14:29:20 UTC" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="CreatePostUser()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:55 UTC" name="CreatePostUser" finished-at="2025-10-09T15:07:59 UTC" duration-ms="4350" status="PASS">
+        <test-method signature="CreatePostUser()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:20 UTC" name="CreatePostUser" description="Verify Create Post API" finished-at="2025-11-03T14:29:24 UTC" duration-ms="3609" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CreatePostUser -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:59 UTC" name="tearDown" finished-at="2025-10-09T15:07:59 UTC" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:24 UTC" name="tearDown" finished-at="2025-11-03T14:29:24 UTC" duration-ms="7" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method signature="GetUsers()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:59 UTC" name="GetUsers" finished-at="2025-10-09T15:07:59 UTC" duration-ms="378" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- GetUsers -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:07:59 UTC" name="setUp" finished-at="2025-10-09T15:07:59 UTC" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:24 UTC" name="setUp" finished-at="2025-11-03T14:29:24 UTC" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.ApiTest@5609159b]" started-at="2025-10-09T15:08:00 UTC" name="tearDown" finished-at="2025-10-09T15:08:00 UTC" duration-ms="1" status="PASS">
+        <test-method signature="GetUsers()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:24 UTC" name="GetUsers" description="Verify Get Users API" finished-at="2025-11-03T14:29:24 UTC" duration-ms="188" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GetUsers -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:24 UTC" name="tearDown" finished-at="2025-11-03T14:29:24 UTC" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.framework.tests.API.ApiTest -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:24 UTC" name="setUp" finished-at="2025-11-03T14:29:24 UTC" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="Users()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:24 UTC" name="Users" description="Skipped test for demo" finished-at="2025-11-03T14:29:24 UTC" duration-ms="13" status="SKIP">
+          <exception class="org.testng.SkipException">
+            <message>
+              <![CDATA[Skipping Users test intentionally for demo]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.SkipException: Skipping Users test intentionally for demo
+at com.framework.tests.API.POMAllureReport.Users(POMAllureReport.java:43)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+at java.base/java.lang.Thread.run(Thread.java:1583)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.SkipException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Users -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.framework.tests.API.POMAllureReport@4fa1c212]" started-at="2025-11-03T14:29:24 UTC" name="tearDown" finished-at="2025-11-03T14:29:24 UTC" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.framework.tests.API.POMAllureReport -->
     </test> <!-- API Validation -->
   </suite> <!-- API Suite -->
 </testng-results>

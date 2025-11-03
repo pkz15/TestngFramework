@@ -1,4 +1,5 @@
 package Utility;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
@@ -67,6 +68,26 @@ public class TestListener implements ITestListener {
 			ExtentReportManager.getTest().log(Status.INFO, "No Screenshot for API Validation..");
 		}
 	}
+	@Override
+	public void onTestSkipped(ITestResult result) {
+	    String methodName = result.getMethod().getMethodName();
+	    WebDriver driver = DriverSetup.getDriver();
+	    String screenshotPath = captureScreenshot(driver, methodName);
+
+	    ExtentReportManager.getTest().log(Status.SKIP, "Test Skipped: " + result.getThrowable());
+	    ExtentReportManager.getTest().log(Status.INFO, "Reason: " + result.getThrowable().getMessage());
+	    
+	    if (screenshotPath != null && !(new BaseApi().isApitest)) {
+	        try {
+	            ExtentReportManager.getTest().addScreenCaptureFromPath(screenshotPath);
+	        } catch (Exception e) {
+	            ExtentReportManager.getTest().log(Status.WARNING, "Failed to attach screenshot: " + e.getMessage());
+	        }
+	    } else {
+	        ExtentReportManager.getTest().log(Status.INFO, "No Screenshot for skipped API test..");
+	    }
+	}
+
 
 	@Override
 	public void onTestFailure(ITestResult result) {
@@ -85,6 +106,7 @@ public class TestListener implements ITestListener {
 			}
 		}
 	}
+	
 
 	@Override
 	public void onFinish(ITestContext context) {
@@ -105,14 +127,14 @@ public class TestListener implements ITestListener {
 		if (passPercentage == 100) {
 			htmlSnippet = "<div id='celebration' style='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;'></div>"
 					+ "<script src='https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js'></script>"
-					+ "<script>confetti({particleCount:400,spread:460});</script>"
-					+ "<div style='position:fixed;bottom:10%;width:100%;text-align:center;font-size:28px;color:green;font-weight:bold;'> Perfect Run! All tests passed successfully!</div>";
+					+ "<script>confetti({particleCount:400,spread:460});</script></div>";
+//					+ "<div style='text-align:center;bottom:10%;font-size:28px;color:green;font-weight:bold;'> Perfect Run! All tests passed successfully!</div>";
 		} else if (passPercentage >= 80) {
-			htmlSnippet = "<div style='position:fixed;;bottom:10%;width:100%;text-align:center;font-size:24px;color:orange;'> Great Job! "
-					+ String.format("%.2f", passPercentage) + "% tests passed. Keep improving!</div>";
+//			htmlSnippet = "<div style='text-align:center;bottom:10%;font-size:24px;color:orange;'> Great Job! "
+//					+ String.format("%.2f", passPercentage) + "% tests passed. Keep improving!</div>";
 		} else {
-			htmlSnippet = "<div style='position:fixed;;bottom:10%;width:100%;text-align:center;font-size:24px;color:red;'> Only "
-					+ String.format("%.2f", passPercentage) + "% passed. Please review failed tests!</div>";
+//			htmlSnippet = "<div style='text-align:center;bottom:10%;font-size:24px;color:red;'> Only "
+//					+ String.format("%.2f", passPercentage) + "% passed. Please review failed tests!</div>";
 		}
 		try {
 			File reportsDir = new File("reports");
